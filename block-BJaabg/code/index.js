@@ -16,3 +16,31 @@ var amount = 0;
 // your code goes here
 
 // ⛑ Answer of the above will `$334.76`.
+
+// Loop to keep purchasing phones until we run out of bank balance
+while (amount + PHONE_PRICE <= bank_balance) {
+  // Buy a phone
+  amount += PHONE_PRICE;
+
+  // Buy accessories if within the spending threshold
+  if (amount + ACCESSORY_PRICE <= SPENDING_THRESHOLD) {
+    amount += ACCESSORY_PRICE;
+  }
+}
+
+// Calculate tax and add to the total amount
+var tax = amount * TAX_RATE;
+amount += tax;
+
+// Format the total amount to two decimal places and add dollar sign
+var formattedAmount = "$" + amount.toFixed(2);
+
+// Print out the total purchase amount
+console.log("Total purchase amount: " + formattedAmount);
+
+// Check if the amount exceeds the bank balance
+if (amount > bank_balance) {
+  console.log("You can't afford this purchase.");
+} else {
+  console.log("You can afford this purchase.");
+}
